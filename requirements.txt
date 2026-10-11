@@ -1,0 +1,5 @@
+torch==2.5.1
+wfdb==4.2.0
+numpy==1.26.4
+pandas==2.2.3
+PyYAML==6.0.2
