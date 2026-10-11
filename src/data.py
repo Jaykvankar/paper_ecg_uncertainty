@@ -145,7 +145,6 @@ def main():
               'Waveform validation: PASS (12 leads x 1000 samples, mV, finite, SHA256 verified)\n'
               'Patient leakage assertion: PASS (all three split pairs disjoint)\n'
               + counts.to_string(index=False) + '\n')
-    (out / 'stage1_checkpoint.txt').write_text(output)
     print(output, end='')
 
 

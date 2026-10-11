@@ -31,14 +31,14 @@ def main():
     out = Path(config['results_dir'])
     out.mkdir(parents=True, exist_ok=True)
     (out / 'environment.json').write_text(json.dumps(result, indent=2) + '\n')
-    lines = [f"Python: {result['python']}", f"wfdb: {result['wfdb']}",
-             f"torch: {result['torch']}", 'import wfdb, torch: PASS',
-             f"CUDA available: {result['cuda_available']}",
-             f"GPU count: {result['gpu_count']}", f"Device: {result['device']}",
-             f'Seed: {seed}']
-    output = '\n'.join(lines) + '\n'
-    (out / 'stage0_checkpoint.txt').write_text(output)
-    print(output, end='')
+    print(f"Python: {result['python']}")
+    print(f"wfdb: {result['wfdb']}")
+    print(f"torch: {result['torch']}")
+    print('import wfdb, torch: PASS')
+    print(f"CUDA available: {result['cuda_available']}")
+    print(f"GPU count: {result['gpu_count']}")
+    print(f"Device: {result['device']}")
+    print(f'Seed: {seed}')
 
 
 if __name__ == '__main__':

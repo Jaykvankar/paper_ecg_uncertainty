@@ -1,7 +1,0 @@
-PTB-XL 1.0.3: 21799 records loaded at 100 Hz
-Waveform validation: PASS (12 leads x 1000 samples, mV, finite, SHA256 verified)
-Patient leakage assertion: PASS (all three split pairs disjoint)
-     split  records  patients  NORM   MI  STTC   CD  HYP  unlabeled
-     train    17418     15023  7596 4379  4186 3907 2119        334
-validation     2183      1942   955  540   528  495  268         37
-      test     2198      1904   963  550   521  496  262         40
