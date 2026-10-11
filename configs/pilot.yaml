@@ -1,5 +1,6 @@
 seed: 42
 dataset_version: 1.0.3
+download_base: https://physionet-open.s3.amazonaws.com/ptb-xl/1.0.3/
 data_dir: data/ptb-xl-1.0.3
 results_dir: results
 sampling_rate: 100
@@ -8,4 +9,4 @@ splits:
   train: [1, 2, 3, 4, 5, 6, 7, 8]
   validation: [9]
   test: [10]
-download_workers: 8
+download_workers: 32
