@@ -63,7 +63,7 @@ class BaselineChecks(unittest.TestCase):
 
     def test_resume_matches_uninterrupted_cpu_training(self):
         config = yaml.safe_load(Path('configs/stage2.yaml').read_text())
-        config.update(epochs=2, width=4, blocks_per_stage=1, batch_size=4, cpu_threads=2)
+        config.update(epochs=2, width=4, blocks_per_stage=1, batch_size=4, cpu_threads=2, device='cpu')
 
         def fake_split(frame, split, data, config, limit):
             rng = np.random.default_rng(12 if split == 'train' else 13)

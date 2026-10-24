@@ -1,1 +1,1 @@
-"""Reproducible paper-ECG pilot; stages 0 and 1 only."""
+"""Paired paper-ECG calibration study. Research runs need an NVIDIA GPU."""
