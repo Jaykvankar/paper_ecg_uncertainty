@@ -26,6 +26,15 @@ def normalize(signal, epsilon=1e-6):
         signal.std(axis=-1, keepdims=True), epsilon)
 
 
+def prepare_signal(signal, standardize=True, epsilon=1e-6):
+    signal = np.asarray(signal, dtype=np.float32)
+    if not np.isfinite(signal).all():
+        raise ValueError('Nonfinite signal')
+    if not standardize:
+        return signal.copy()
+    return normalize(signal, epsilon)
+
+
 def load_split(frame, split, data_config, training_config, limit=None):
     part = frame.loc[frame.split == split]
     if limit:
@@ -34,7 +43,9 @@ def load_split(frame, split, data_config, training_config, limit=None):
     root = Path(data_config['data_dir'])
 
     def read(filename):
-        return normalize(load_signal(root, filename), training_config['normalization_epsilon'])
+        return prepare_signal(
+            load_signal(root, filename), training_config.get('standardize', True),
+            training_config['normalization_epsilon'])
 
     with ThreadPoolExecutor(max_workers=training_config['load_workers']) as pool:
         for n, value in enumerate(pool.map(read, part.filename_lr)):

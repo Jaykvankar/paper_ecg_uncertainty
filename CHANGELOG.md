@@ -1,5 +1,12 @@
 # Research decisions
 
+## Locked calibration question (2026-10-24)
+- The question is the change in classwise ECE when the same frozen classifier reads a traced paper page instead of the clean waveform. Diagnosis is an outcome, not an input. See `PROTOCOL.md` and `configs/paired.yaml`.
+- Two arms share seed 42 and the compact residual network: standardized leads, and raw millivolts. Both request CUDA and stop if no NVIDIA GPU is visible. `--smoke` remains the CPU check.
+- Google Colab and an RTX 40-series laptop use torch 2.5.1 with CUDA 12.4. Their checkpoints stay in different directories. Fold 10 is scored once per arm.
+- The page tracer is ECG-Image-Kit's column max-finder at commit `27b90f56`. A printed page of training record `00001_lr` must correlate with the clean leads before any fold-10 paired score.
+- Full training has not been run. No fold-10 result is claimed.
+
 ## Colab preparation and Stage 2 implementation (2026-10-12)
 - Existing Stage 0/1 source files and saved results remain unchanged.
 - Bundle existing data/code/results with per-file hashes and a checked ZIP.
