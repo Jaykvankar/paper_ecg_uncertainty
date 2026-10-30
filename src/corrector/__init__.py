@@ -9,11 +9,11 @@ from pathlib import Path
 
 import numpy as np
 
-from .intervals import bootstrap_classwise_delta_ece, classwise_delta
-from .metrics import classification_metrics
-from .pages import lead_std_mv, page_dir, probability_logit
-from .protocol import CORRECTOR_FEATURES, load_protocol
-from .train import atomic_json
+from ..intervals import bootstrap_classwise_delta_ece, classwise_delta
+from ..metrics import classification_metrics
+from ..pages import lead_std_mv, page_dir, probability_logit
+from ..protocol import CORRECTOR_FEATURES, load_protocol
+from ..train import atomic_json
 
 COEFFICIENTS = Path('results/corrector/raw_mv.json')
 LOGIT_COEFFICIENTS = Path('results/corrector/logit_only.json')
@@ -221,3 +221,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

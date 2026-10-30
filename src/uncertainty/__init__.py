@@ -1,4 +1,4 @@
-"""Binary entropy of uncalibrated class probabilities, in nats."""
+"""Uncertainty quantification, entropy, and trace-stratified conformal risk control."""
 import numpy as np
 
 
