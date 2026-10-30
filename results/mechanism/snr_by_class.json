@@ -1,0 +1,36 @@
+{
+  "split": "test",
+  "level": "creased",
+  "by_class": {
+    "NORM": {
+      "with_label_mean_snr_db": 9.641603695990923,
+      "with_label_records": 963,
+      "without_label_mean_snr_db": 8.593158345990192,
+      "without_label_records": 1195
+    },
+    "MI": {
+      "with_label_mean_snr_db": 9.104925169061007,
+      "with_label_records": 550,
+      "without_label_mean_snr_db": 9.046007300817157,
+      "without_label_records": 1608
+    },
+    "STTC": {
+      "with_label_mean_snr_db": 7.59956351771399,
+      "with_label_records": 521,
+      "without_label_mean_snr_db": 9.526155155753544,
+      "without_label_records": 1637
+    },
+    "CD": {
+      "with_label_mean_snr_db": 8.829031994534551,
+      "with_label_records": 496,
+      "without_label_mean_snr_db": 9.130257950305898,
+      "without_label_records": 1662
+    },
+    "HYP": {
+      "with_label_mean_snr_db": 5.0193133336392455,
+      "with_label_records": 262,
+      "without_label_mean_snr_db": 9.61952979392619,
+      "without_label_records": 1896
+    }
+  }
+}

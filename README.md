@@ -4,7 +4,7 @@ The locked question is whether tracing a synthetic PTB-XL paper page changes cla
 
 ## Current status
 
-Stage 2 training and clean-test evaluation are implemented. Full baseline training has not been run, so there is no fold-10 result. The saved Stage 0/1 files validate the waveforms and labels only.
+Both arms are trained, and clean fold-10 scores are in `results/stage2` and `results/stage2_raw`. A creased-page rerun of fold 10 matched the locked classwise calibration shifts in `results/paired_standardized.json` and `results/paired_raw_mv.json`. Those locked files were not rewritten. The same rerun stores a patient bootstrap of the raw-minus-standardized difference. The five classwise shifts stay the primary result. A conduction-disturbance corrector target is secondary.
 
 Research training uses one NVIDIA GPU through CUDA 12.4. The same code runs in Google Colab and on a laptop with an RTX 40-series GPU. A run stops if no NVIDIA GPU is visible. `--smoke` is the only CPU training check. Checkpoints from the two machines stay in different directories. Score fold 10 once per arm.
 
@@ -160,8 +160,4 @@ by Git. Metrics and predictions are saved in the run directory alongside a repor
 
 ## What remains
 
-Rebuild the Colab bundle after this code change, upload it, and train both arms on
-the NVIDIA GPU. The printed-page check on `00001_lr` has to pass before either arm
-is scored on fold 10. The primary page is the creased page. The result is the
-classwise change in ECE, with a patient bootstrap. Nothing in this repository is a
-fold-10 result until those GPU runs finish.
+Copy the D0 color-scan variant id from `dataset_description.xlsx` into `configs/paired.yaml` before scoring real scans. Until that id and the images are on disk, the training-fold gate stays blocked and no fold-10 scan file is written. Printed and noisy pages are not a new primary.

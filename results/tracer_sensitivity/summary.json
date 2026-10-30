@@ -1,0 +1,21 @@
+{
+  "fold10_retraced": false,
+  "method": "dark_run",
+  "mean_snr_db": 9.06,
+  "snr_above_locked": false,
+  "succeeded": false,
+  "reason": "The dark-run reader stays. Fold 9 did not prefer image_to_sequence.",
+  "validation": {
+    "split": "validation",
+    "records": 2146,
+    "records_traced_by_both": 2146,
+    "dark_run_mean_snr_db": 9.140996524104244,
+    "image_to_sequence_mean_snr_db": 7.203484147710708,
+    "dark_run_failures": 0,
+    "image_to_sequence_failures": 0,
+    "chosen": "dark_run",
+    "reason": "The dark-run reader stays. Fold 9 did not prefer image_to_sequence."
+  },
+  "primary_unchanged": true,
+  "locked_mean_snr_db": 9.06
+}

@@ -45,3 +45,48 @@ def bootstrap_classwise_delta_ece(labels, clean_probability, paper_probability, 
         'resamples': resamples, 'seed': seed, 'cluster': 'patient',
         'percentiles': [low_q, high_q],
     }
+
+
+def _arm_difference(labels, clean_raw, paper_raw, clean_standardized, paper_standardized, classes, bins):
+    raw = classwise_delta(labels, clean_raw, paper_raw, classes, bins)['delta_classwise_ece']
+    standardized = classwise_delta(
+        labels, clean_standardized, paper_standardized, classes, bins)['delta_classwise_ece']
+    return {name: raw[name] - standardized[name] for name in classes}
+
+
+def bootstrap_arm_contrast(labels, clean_raw, paper_raw, clean_standardized, paper_standardized,
+                           classes, patient_ids, bins=15, resamples=1000, seed=42,
+                           percentiles=(2.5, 97.5)):
+    """Patient bootstrap of raw-millivolt ΔECE minus standardized ΔECE on the same records."""
+    labels = np.asarray(labels)
+    clean_raw = np.asarray(clean_raw)
+    paper_raw = np.asarray(paper_raw)
+    clean_standardized = np.asarray(clean_standardized)
+    paper_standardized = np.asarray(paper_standardized)
+    patient_ids = np.asarray(patient_ids)
+    if not (len(labels) == len(patient_ids) == len(clean_raw) == len(paper_raw)
+            == len(clean_standardized) == len(paper_standardized)):
+        raise ValueError('Both arms need the same records')
+    point = _arm_difference(
+        labels, clean_raw, paper_raw, clean_standardized, paper_standardized, classes, bins)
+    patients = np.unique(patient_ids)
+    groups = {patient: np.flatnonzero(patient_ids == patient) for patient in patients}
+    rng = np.random.default_rng(seed)
+    draws = {name: np.empty(resamples, dtype=np.float64) for name in classes}
+    for draw in range(resamples):
+        chosen = rng.choice(patients, size=len(patients), replace=True)
+        index = np.concatenate([groups[patient] for patient in chosen])
+        delta = _arm_difference(
+            labels[index], clean_raw[index], paper_raw[index],
+            clean_standardized[index], paper_standardized[index], classes, bins)
+        for name in classes:
+            draws[name][draw] = delta[name]
+    low_q, high_q = percentiles
+    return {
+        'contrast': 'raw_mv minus standardized',
+        'point': point,
+        'low': {name: float(np.percentile(draws[name], low_q)) for name in classes},
+        'high': {name: float(np.percentile(draws[name], high_q)) for name in classes},
+        'resamples': resamples, 'seed': seed, 'cluster': 'patient',
+        'percentiles': [low_q, high_q],
+    }

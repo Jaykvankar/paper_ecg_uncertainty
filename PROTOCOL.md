@@ -42,4 +42,14 @@ Google Colab and a laptop with an RTX 40-series GPU use the same code and CUDA 1
 
 ## Claim
 
-This measures synthetic PTB-XL paper pages only. It is not a clinical claim and it does not cover photographs of real paper.
+The primary result measures synthetic PTB-XL paper pages only. It is not a clinical claim and it does not cover photographs of real paper.
+
+## Added checks
+
+These checks do not change the primary outcome, the creased page, or the arm order.
+
+- Oracle scale check: affine-match each traced lead to that record's clean mean and standard deviation, then rescore both frozen models. This uses the clean waveform. It is not an input to the corrector.
+- Error-aware corrector: one logistic map per superclass for the raw-millivolt arm. Features are the frozen logit, the traced lead's own standard deviation in millivolts, and the fraction of columns with no ink. Fit on synthetic fold 9 only. Apply once to synthetic fold 10. The five classwise calibration changes remain the primary result. The conduction-disturbance target is a secondary check suggested by the locked fold-10 scores. A logit-only map, fit on the same fold, is the recalibration baseline. The trace features earn their place only if they move that secondary shift closer to zero than the logit-only map and macro AUROC stays within 0.01 of the uncorrected traced page.
+- Arm contrast: patient bootstrap of raw-millivolt ΔECE minus standardized ΔECE on the same records.
+- Reconstruction by diagnosis: mean lead SNR for records with and without each superclass.
+- External image test: ECG-Image-Database directory `D0`, color scans of printed PTB-XL pages, records that also sit in official fold 10. Both frozen models score those scans once. The corrector is not refit. A training-fold scan must correlate at least 0.80 on every lead before any fold-10 scan is scored. The color-scan variant id is copied from `dataset_description.xlsx` into `configs/paired.yaml` before that score. Emory, Akershus, phone photographs, and mold stay outside the claim.
