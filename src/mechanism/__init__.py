@@ -1,4 +1,4 @@
-"""Oracle scale check. The clean waveform is used here and nowhere in the corrector."""
+"""Mechanisms of tracing-induced calibration error."""
 import argparse
 import json
 from pathlib import Path
@@ -7,12 +7,12 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 
-from .intervals import bootstrap_classwise_delta_ece, classwise_delta
-from .models import ECGResNet
-from .pages import affine_match, page_dir
-from .paired import arm_summary, load_ready_model, prepare_batch
-from .protocol import load_protocol
-from .train import atomic_json, predict, resolve_device
+from src.intervals import bootstrap_classwise_delta_ece, classwise_delta
+from src.models import ECGResNet
+from src.pages import affine_match, page_dir
+from src.paired import arm_summary, load_ready_model, prepare_batch
+from src.protocol import load_protocol
+from src.train import atomic_json, predict, resolve_device
 
 
 def reliability_bins(labels, probability, classes, bins=15):
@@ -114,3 +114,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
