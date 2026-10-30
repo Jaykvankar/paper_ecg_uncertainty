@@ -15,3 +15,4 @@ results/paired_pages/
 *.tif
 *.tiff
 *.pdf
+*.npz
