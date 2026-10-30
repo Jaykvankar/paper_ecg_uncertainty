@@ -1,0 +1,182 @@
+{
+  "role": "sensitivity",
+  "width": 64,
+  "primary_unchanged": true,
+  "agreement_rule": "interval_excludes_zero_and_same_sign_as_locked_contrast",
+  "agreement_class": "CD",
+  "agrees": true,
+  "locked_contrast_point": {
+    "NORM": 0.009632491463835442,
+    "MI": 0.0016365879138592332,
+    "STTC": 0.03657632878519699,
+    "CD": 0.1613354677211512,
+    "HYP": 0.03423478086219493
+  },
+  "contrast": {
+    "contrast": "raw_mv minus standardized",
+    "point": {
+      "NORM": 0.07546297624619361,
+      "MI": 0.06292857641270896,
+      "STTC": 0.01237529318523757,
+      "CD": 0.15387463633035675,
+      "HYP": 0.01253412453707968
+    },
+    "low": {
+      "NORM": 0.06037302970076818,
+      "MI": 0.047487787594494776,
+      "STTC": -0.009847074649121082,
+      "CD": 0.1355179398148155,
+      "HYP": 0.0016250806497459106
+    },
+    "high": {
+      "NORM": 0.09141616906988397,
+      "MI": 0.07202112441787359,
+      "STTC": 0.03488772213697868,
+      "CD": 0.16874931221960776,
+      "HYP": 0.02720945659770333
+    },
+    "resamples": 1000,
+    "seed": 42,
+    "cluster": "patient",
+    "percentiles": [
+      2.5,
+      97.5
+    ]
+  },
+  "standardized": {
+    "status": "paired_scored",
+    "arm": "standardized",
+    "level": "creased",
+    "split": "test",
+    "primary_level": "creased",
+    "primary_outcome": "delta_classwise_ece",
+    "records": 2158,
+    "limit": null,
+    "delta_classwise_ece": {
+      "NORM": 0.04575216810180932,
+      "MI": 0.01595500747229705,
+      "STTC": 0.01715165530012951,
+      "CD": 0.009757611318949928,
+      "HYP": 0.013665256755064283
+    },
+    "delta_classwise_auroc": {
+      "NORM": -0.02939993135120811,
+      "MI": -0.02795567616463146,
+      "STTC": -0.037996100258302246,
+      "CD": -0.02875228057917001,
+      "HYP": -0.09579427964054488
+    },
+    "delta_mean_binary_entropy": {
+      "NORM": 0.06021145201978684,
+      "MI": 0.13680689879073032,
+      "STTC": 0.1179901687408747,
+      "CD": 0.12162855158347965,
+      "HYP": -0.019137395301674465
+    },
+    "paper_macro_auroc": 0.867302359479438,
+    "patient_bootstrap": {
+      "point": {
+        "NORM": 0.04575216810180932,
+        "MI": 0.01595500747229705,
+        "STTC": 0.01715165530012951,
+        "CD": 0.009757611318949928,
+        "HYP": 0.013665256755064283
+      },
+      "low": {
+        "NORM": 0.020046701213870324,
+        "MI": -0.008927239215064477,
+        "STTC": 0.00041974836225626406,
+        "CD": -0.006421785256170127,
+        "HYP": -0.0033993950887773
+      },
+      "high": {
+        "NORM": 0.0648809615695224,
+        "MI": 0.03971258329760992,
+        "STTC": 0.024458250896983003,
+        "CD": 0.024288733469982834,
+        "HYP": 0.025322973179247175
+      },
+      "resamples": 1000,
+      "seed": 42,
+      "cluster": "patient",
+      "percentiles": [
+        2.5,
+        97.5
+      ]
+    },
+    "mean_snr_db": 9.061023439618879,
+    "digitizer_check": "records100/00000/00001_lr",
+    "claim_scope": "synthetic PTB-XL paper ECG only",
+    "run_dir": "results\\stage2_wide",
+    "role": "sensitivity",
+    "width": 64
+  },
+  "raw_mv": {
+    "status": "paired_scored",
+    "arm": "raw_mv",
+    "level": "creased",
+    "split": "test",
+    "primary_level": "creased",
+    "primary_outcome": "delta_classwise_ece",
+    "records": 2158,
+    "limit": null,
+    "delta_classwise_ece": {
+      "NORM": 0.12121514434800293,
+      "MI": 0.078883583885006,
+      "STTC": 0.02952694848536708,
+      "CD": 0.16363224764930667,
+      "HYP": 0.026199381292143963
+    },
+    "delta_classwise_auroc": {
+      "NORM": -0.05356256815999516,
+      "MI": -0.04120533695160555,
+      "STTC": -0.06505861923817846,
+      "CD": -0.0503607682155196,
+      "HYP": -0.09260757883209336
+    },
+    "delta_mean_binary_entropy": {
+      "NORM": 0.08639500712887871,
+      "MI": 0.18389611031027703,
+      "STTC": 0.08831509239325114,
+      "CD": 0.21684148455939548,
+      "HYP": 0.02302391611399579
+    },
+    "paper_macro_auroc": 0.8651726467706882,
+    "patient_bootstrap": {
+      "point": {
+        "NORM": 0.12121514434800293,
+        "MI": 0.078883583885006,
+        "STTC": 0.02952694848536708,
+        "CD": 0.16363224764930667,
+        "HYP": 0.026199381292143963
+      },
+      "low": {
+        "NORM": 0.09404266677805188,
+        "MI": 0.051517574279206085,
+        "STTC": 0.00812996467420698,
+        "CD": 0.1450254723773807,
+        "HYP": 0.017747706431446915
+      },
+      "high": {
+        "NORM": 0.1431757236981207,
+        "MI": 0.09801582186352328,
+        "STTC": 0.04218728282308353,
+        "CD": 0.17479615790750838,
+        "HYP": 0.03285523038909139
+      },
+      "resamples": 1000,
+      "seed": 42,
+      "cluster": "patient",
+      "percentiles": [
+        2.5,
+        97.5
+      ]
+    },
+    "mean_snr_db": 9.061023439618879,
+    "digitizer_check": "records100/00000/00001_lr",
+    "claim_scope": "synthetic PTB-XL paper ECG only",
+    "run_dir": "results\\stage2_wide_raw",
+    "role": "sensitivity",
+    "width": 64
+  }
+}

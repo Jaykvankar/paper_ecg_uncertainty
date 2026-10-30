@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "record": "records100/00000/00001_lr",
+  "split": "train",
+  "strat_fold": 3,
+  "level": "printed",
+  "lead_correlation": {
+    "I": 0.9932520608543014,
+    "II": 0.9955915363496248,
+    "III": 0.9932252177556553,
+    "AVR": 0.979768316411595,
+    "AVL": 0.9834370377317323,
+    "AVF": 0.9842236530984843,
+    "V1": 0.9958098809889518,
+    "V2": 0.9887705278587197,
+    "V3": 0.9912157762707073,
+    "V4": 0.9851166510220427,
+    "V5": 0.9951016525606152,
+    "V6": 0.9974610219947492
+  },
+  "minimum_correlation": 0.979768316411595,
+  "threshold": 0.8,
+  "page": "C:\\Users\\Lenovo\\Desktop\\paper_ecg_uncertainty\\.artifacts\\digitizer_check\\00001_lr-0.png",
+  "digitizer": "ecg_image_kit_image_to_sequence_max_finder",
+  "note": "Layout boxes locate leads. The max-finder supplies the waveform. Fold 10 was not scored."
+}

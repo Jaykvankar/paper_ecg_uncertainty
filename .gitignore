@@ -6,3 +6,12 @@ __pycache__/
 .artifacts/
 *.pt
 paired_images/
+results/paired_pages/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.pdf

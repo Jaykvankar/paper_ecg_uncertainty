@@ -1,5 +1,11 @@
 # Research decisions
 
+## Reproduced creased-page scores (2026-10-28)
+- Fold-10 creased pages were rendered once and scored with both frozen models. Every classwise change in ECE matched the locked JSON. The locked files were not replaced.
+- The rerun adds a patient bootstrap of raw-minus-standardized classwise ΔECE on the same records. All five classes remain the primary result. The conduction-disturbance corrector target is a secondary check.
+- A fold-9 logit-only map and the trace-only map were each applied once on fold 10. The trace map's CD change is closer to zero than the logit-only map, and its macro AUROC stays inside the 0.01 limit. Lead SNR with and without each superclass is in `results/mechanism/snr_by_class.json`.
+- The D0 color-scan gate is blocked because the variant id is unset. No fold-10 scan file was written.
+
 ## Locked calibration question (2026-10-24)
 - The question is the change in classwise ECE when the same frozen classifier reads a traced paper page instead of the clean waveform. Diagnosis is an outcome, not an input. See `PROTOCOL.md` and `configs/paired.yaml`.
 - Two arms share seed 42 and the compact residual network: standardized leads, and raw millivolts. Both request CUDA and stop if no NVIDIA GPU is visible. `--smoke` remains the CPU check.

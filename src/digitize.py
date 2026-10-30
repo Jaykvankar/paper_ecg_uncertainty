@@ -88,7 +88,7 @@ def _resample(values, n_samples):
     return np.interp(np.linspace(0.0, 1.0, n_samples), source, values)
 
 
-def recover_leads(image, layout, n_samples=1000):
+def recover_leads(image, layout, n_samples=1000, return_gap=False):
     """Read each lead with the column max-finder inside its box.
 
     A tall QRS can enter the next lead's box. Rows that belong to only one box
@@ -106,13 +106,23 @@ def recover_leads(image, layout, n_samples=1000):
         entries.append((entry, _box_limits(entry['lead_bounding_box'])))
     millivolts_per_pixel = 0.5 / float(layout['y_grid'])
     found = {}
+    gaps = []
     for entry, span in entries:
         name = canon_lead(entry.get('lead_name'))
         if name is None or name in found:
             continue
         top, bottom, left, right = span
+
+        # Clip the bounding box to the actual image dimensions.
+        image_height, image_width = gray.shape[:2]
+        top = max(0, top)
+        bottom = min(image_height - 1, bottom)
+        left = max(0, left)
+        right = min(image_width - 1, right)
+
         if bottom <= top or right <= left:
             raise ValueError(f'{name} has an empty box')
+
         exclusive = np.ones(bottom - top + 1, dtype=bool)
         for _, other in entries:
             if other == span:
@@ -134,10 +144,80 @@ def recover_leads(image, layout, n_samples=1000):
             raise ValueError(f'No ink for {name}')
         reference = float(np.median(seeds))
         rows = np.empty(crop.shape[1], dtype=np.float64)
+        empty = 0
         for column in range(crop.shape[1]):
             runs = _dark_runs(crop[:, column])
-            rows[column] = reference if not runs else min(runs, key=lambda row: abs(row - reference))
+            if not runs:
+                empty += 1
+                rows[column] = reference
+            else:
+                rows[column] = min(runs, key=lambda row: abs(row - reference))
+        gaps.append(empty / crop.shape[1])
         image_row = top + rows
+        centered = (np.median(image_row) - image_row) * millivolts_per_pixel
+        start, end = int(entry['start_sample']), int(entry['end_sample'])
+        if end <= start:
+            raise ValueError(f'{name} has an empty time span')
+        piece = _resample(centered, end - start).astype(np.float32)
+        full = np.full(n_samples, np.nan, dtype=np.float32)
+        full[start:end] = piece
+        if not np.isfinite(full).all():
+            raise ValueError(f'{name} was not plotted across the full record')
+        found[name] = full
+    missing = [name for name in MODEL_LEADS if name not in found]
+    if missing:
+        raise ValueError(f'Missing leads: {missing}')
+    waveform = np.stack([found[name] for name in MODEL_LEADS]).astype(np.float32)
+    if return_gap:
+        return waveform, float(np.mean(gaps))
+    return waveform
+
+
+def recover_leads_sequence(image, layout, n_samples=1000):
+    """Same lead boxes and voltage scale as recover_leads.
+
+    The column position comes from image_to_sequence. Page ink is dark, so each
+    crop is inverted before that max-finder. The clean waveform is not read.
+    """
+    if 'y_grid' not in layout:
+        raise ValueError('The page layout has no voltage scale')
+    gray = _luminance(image)
+    entries = []
+    for entry in layout['leads']:
+        entry = {key: value for key, value in entry.items() if key != 'plotted_pixels'}
+        if 'lead_bounding_box' not in entry:
+            continue
+        entries.append((entry, _box_limits(entry['lead_bounding_box'])))
+    millivolts_per_pixel = 0.5 / float(layout['y_grid'])
+    found = {}
+    image_height, image_width = gray.shape[:2]
+    for entry, span in entries:
+        name = canon_lead(entry.get('lead_name'))
+        if name is None or name in found:
+            continue
+        top, bottom, left, right = span
+        top = max(0, top)
+        bottom = min(image_height - 1, bottom)
+        left = max(0, left)
+        right = min(image_width - 1, right)
+        if bottom <= top or right <= left:
+            raise ValueError(f'{name} has an empty box')
+        crop = gray[top:bottom + 1, left:right + 1]
+        ink = crop.max() - crop
+        mask = ink.copy()
+        for _, other in entries:
+            if other == span:
+                continue
+            if other[1] < top or other[0] > bottom:
+                continue
+            row_start = max(top, other[0]) - top
+            row_stop = min(bottom, other[1]) - top + 1
+            mask[row_start:row_stop, :] = 0
+        if mask.max() <= 0:
+            mask = ink
+        sequence = image_to_sequence(mask)
+        row_from_top = (crop.shape[0] - 1) - sequence
+        image_row = top + row_from_top
         centered = (np.median(image_row) - image_row) * millivolts_per_pixel
         start, end = int(entry['start_sample']), int(entry['end_sample'])
         if end <= start:

@@ -1,0 +1,9 @@
+{
+  "status": "ready_for_clean_test",
+  "epochs_completed": 30,
+  "best_validation_macro_auroc": 0.9091486459396168,
+  "selection_split": "fold 9 only",
+  "test_evaluated": false,
+  "review_threshold": 0.88,
+  "signature": "1b20f565b5970979ca2eb0126077aa7557daa75ccb4bc9d39a1dddaab1716fbb"
+}
