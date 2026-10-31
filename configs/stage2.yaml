@@ -11,4 +11,6 @@ load_workers: 8
 cpu_threads: 4
 amp: true
 exclude_unlabeled: true
+standardize: true
+device: cuda
 validation_auc_review_threshold: 0.88

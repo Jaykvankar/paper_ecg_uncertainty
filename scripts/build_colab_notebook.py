@@ -25,8 +25,12 @@ def main():
         # Colab setup and Stage 2 clean baseline
 
         Run cells individually in order on the connected Colab GPU kernel.
-        Stages 0/1 already completed locally. Stage 2 code is implemented, but no full
-        training results exist until you run it. Stage 3 must wait for baseline review.
+        The same commands run on a laptop with an RTX 40-series GPU. Research
+        training stops if no NVIDIA GPU is visible.
+
+        The locked question is whether tracing a synthetic PTB-XL paper page
+        changes classwise calibration. See `PROTOCOL.md`. Fold 10 is scored
+        once per arm, after the training-record trace check passes.
 
         **One-time manual step:** in VS Code Explorer, right-click
         `.artifacts/colab_stage01.zip` and choose **Upload to Colab**.
@@ -161,9 +165,58 @@ def main():
         for key in ['status', 'records', 'macro_auroc', 'per_class_auroc', 'ece', 'brier']:
             print(key, ':', baseline[key])
         print('Saved report:', run_dir / 'REPORT.md')
-        print('STOP: share these measured results for review before Stage 3.')
+        print('STOP: share these measured results for review before paired scoring.')
     ''', 'evaluate-stage2'), cell('markdown', '''
-        ## 8. Export small result files for GitHub
+        ## 8. Train the raw-millivolt arm
+        Same seed, width, and block count as the standardized arm. Voltages stay in
+        millivolts. Use a different Drive folder. Do not resume one arm into the other.
+    ''', 'raw-notes'), cell('code', '''
+        RAW_NAME = 'stage2_raw_seed42_v1'
+        raw_dir = persistent / RAW_NAME
+        command = [str(python), '-u', '-m', 'src.train', '--config', 'configs/stage2_raw.yaml',
+                   '--output-dir', str(raw_dir)]
+        if (raw_dir / 'last.pt').exists():
+            command.append('--resume')
+        subprocess.run(command, cwd=project, check=True)
+        raw_summary = json.loads((raw_dir / 'training_summary.json').read_text())
+        print(json.dumps(raw_summary, indent=2))
+        if raw_summary['status'] != 'ready_for_clean_test':
+            raise RuntimeError('Review the raw-millivolt validation result before its test evaluation.')
+    ''', 'train-raw'), cell('markdown', '''
+        ## 9. Check the page tracer on one training record
+        Record `00001_lr` is official fold 3, so this does not touch fold 10.
+        The kit is cloned at the locked commit. Every recovered lead must correlate
+        at least 0.80 with the clean lead before paired scoring.
+    ''', 'digitizer-notes'), cell('code', '''
+        import subprocess as digitizer_subprocess
+        kit = Path('/content/ecg-image-kit')
+        if not (kit / 'codes/ecg-image-generator/extract_leads.py').exists():
+            digitizer_subprocess.run(['git', 'clone', 'https://github.com/alphanumericslab/ecg-image-kit.git', str(kit)], check=True)
+            digitizer_subprocess.run(['git', 'checkout', '27b90f56896c9fc78b05a83ca14844ea2637aa0b'], cwd=kit, check=True)
+        link = project / '.tools' / 'ecg-image-kit'
+        link.parent.mkdir(parents=True, exist_ok=True)
+        if not link.exists():
+            link.symlink_to(kit)
+        digitizer_subprocess.run([uv, 'pip', 'install', '--python', str(python),
+                                  '-r', str(project / 'requirements-paper.txt')], check=True, env=uv_env)
+        digitizer_subprocess.run([str(python), '-m', 'src.digitize', '--check'], cwd=project, check=True)
+        check = json.loads((project / 'results/digitizer_check.json').read_text())
+        print(check['status'], check['minimum_correlation'])
+        if check['status'] != 'passed':
+            raise RuntimeError('Trace check failed. Do not score fold 10.')
+    ''', 'digitizer-check'), cell('markdown', '''
+        ## 10. Paired score, after both arms and the trace check
+        One fold-10 score per arm. The primary page is creased. Do not run this twice
+        and keep the better number. On the laptop, pass `--run-dir results/stage2`.
+    ''', 'paired-notes'), cell('code', '''
+        for arm_name, arm_dir in (('standardized', run_dir), ('raw_mv', raw_dir)):
+            paired_out = persistent / (arm_name + '_paired.json')
+            subprocess.run([str(python), '-u', '-m', 'src.paired', '--arm', arm_name,
+                            '--run-dir', str(arm_dir), '--output', str(paired_out)],
+                           cwd=project, check=True)
+            print(arm_name, paired_out)
+    ''', 'paired-score'), cell('markdown', '''
+        ## 11. Export small result files for GitHub
         Everything in the run directory is already on Drive. This archive contains
         metrics/configs/logs/reports and predictions, excluding model checkpoints.
         Retrieve it from the extension's Colab Contents view or Google Drive.

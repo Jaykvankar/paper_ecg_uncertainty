@@ -26,7 +26,8 @@ def main():
     hashes = {}
     # Explicit allowlist avoids bundling environments, Git credentials or tools.
     include = ['src', 'configs', 'tests', 'scripts', 'results',
-               'README.md', 'requirements.txt', result['config']['data_dir']]
+               'README.md', 'requirements.txt', 'requirements-paper.txt', 'PROTOCOL.md',
+               result['config']['data_dir']]
     if (ROOT / 'CHANGELOG.md').exists():
         include.append('CHANGELOG.md')
     with ZipFile(temporary, 'w', ZIP_DEFLATED, compresslevel=1) as archive:

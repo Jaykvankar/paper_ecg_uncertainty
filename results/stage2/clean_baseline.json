@@ -1,0 +1,113 @@
+{
+  "records": 2158,
+  "macro_auroc": 0.9076432889752459,
+  "per_class_auroc": {
+    "NORM": 0.9401095773754438,
+    "MI": 0.912244459520579,
+    "STTC": 0.9330853100740201,
+    "CD": 0.9191558945693102,
+    "HYP": 0.8336212033368764
+  },
+  "ece": 0.03979251337008378,
+  "per_class_ece": {
+    "NORM": 0.04723258253639075,
+    "MI": 0.030959381802534325,
+    "STTC": 0.025432065749688655,
+    "CD": 0.04337138683767719,
+    "HYP": 0.05196714992412796
+  },
+  "brier": 0.0913006453230234,
+  "per_class_brier": {
+    "NORM": 0.1004445144593043,
+    "MI": 0.09981349279932904,
+    "STTC": 0.08661532090263625,
+    "CD": 0.08387062702214532,
+    "HYP": 0.08575927143170206
+  },
+  "ece_bins": 15,
+  "ece_definition": "Mean classwise equal-width positive-probability ECE",
+  "brier_definition": "Mean squared error across all record/class pairs",
+  "split": "fold 10, diagnostic-labeled records only",
+  "classes": [
+    "NORM",
+    "MI",
+    "STTC",
+    "CD",
+    "HYP"
+  ],
+  "excluded_unlabeled_records": {
+    "train": 334,
+    "validation": 37,
+    "test": 40
+  },
+  "checkpoint_epoch": 12,
+  "checkpoint_sha256": "a66a830162b88e31d8c0854a4ad0ecfd93c0ed6989a678a04d61b5bb1d4b9a17",
+  "best_validation_macro_auroc": 0.9091486459396168,
+  "calibration": "none; raw sigmoid probabilities",
+  "run_config": {
+    "training": {
+      "seed": 42,
+      "epochs": 30,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "width": 32,
+      "blocks_per_stage": 2,
+      "normalization_epsilon": 1e-06,
+      "ece_bins": 15,
+      "load_workers": 8,
+      "cpu_threads": 4,
+      "amp": true,
+      "exclude_unlabeled": true,
+      "standardize": true,
+      "device": "cuda",
+      "validation_auc_review_threshold": 0.88
+    },
+    "data": {
+      "seed": 42,
+      "dataset_version": "1.0.3",
+      "download_base": "https://physionet-open.s3.amazonaws.com/ptb-xl/1.0.3/",
+      "data_dir": "data/ptb-xl-1.0.3",
+      "results_dir": "results",
+      "sampling_rate": 100,
+      "classes": [
+        "NORM",
+        "MI",
+        "STTC",
+        "CD",
+        "HYP"
+      ],
+      "splits": {
+        "train": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "validation": [
+          9
+        ],
+        "test": [
+          10
+        ]
+      },
+      "download_workers": 32
+    },
+    "smoke": false,
+    "source_hashes": {
+      "ptbxl_database.csv": "7600de9c1b27d181d850b3c6038a35d7c3ddb6bb33b702e3a20252a6859d216b",
+      "scp_statements.csv": "ad05b0b1fcae83bb1230755ad9cfc7c96f303feddc08a4a9ad5bdc9ca63bac8f",
+      "record_labels.csv": "efc1a1e92419b900a1633f945ddc8356f1e6ec0bbf674ab85fecd86be856457b",
+      "src/models.py": "d3312e6b98f047398d94546624d5c7dbc090e7a796294b6816c95305238243db",
+      "src/baseline_data.py": "ac9bdae7f5a717034e3e16776a5d4f82c66438a73452c16323328cec373086b8",
+      "src/metrics.py": "8febb9dc3238cfba72ed5759a8fabdda7a4806dd55f46febf5d00476beb9da1d",
+      "src/train.py": "8981fc3268d5bddc3eee5bed11c25e1021b6fe8113759210ab123234e754043d",
+      "src/eval.py": "38168ff6d8517e43b16d7781297ab7ab534c070a077669a66bfeaf4ce8f95a36"
+    }
+  },
+  "status": "baseline_measured"
+}

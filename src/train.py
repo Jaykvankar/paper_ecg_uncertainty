@@ -32,6 +32,23 @@ def seed_everything(seed, threads):
     torch.use_deterministic_algorithms(True)
 
 
+def resolve_device(preference, smoke):
+    """Research runs use one NVIDIA GPU. Smoke tests and explicit cpu configs stay on CPU."""
+    if smoke:
+        preference = 'cpu'
+    if preference == 'cpu':
+        return torch.device('cpu')
+    if preference != 'cuda':
+        raise RuntimeError(
+            f'Unsupported device {preference!r}. This project trains on NVIDIA CUDA '
+            '(Google Colab or a 40-series laptop).')
+    if not torch.cuda.is_available():
+        raise RuntimeError(
+            'No NVIDIA GPU is visible. Train on Google Colab or the 40-series laptop, '
+            'or pass --smoke for a CPU check.')
+    return torch.device('cuda')
+
+
 def atomic_json(path, value):
     temporary = path.with_suffix(path.suffix + '.tmp')
     temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
@@ -103,7 +120,7 @@ def main():
     frame = baseline_frame(data_config)
     train, train_ids = load_split(frame, 'train', data_config, config, 64 if args.smoke else None)
     validation, validation_ids = load_split(frame, 'validation', data_config, config, 64 if args.smoke else None)
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = resolve_device(config.get('device', 'cuda'), args.smoke)
     generator = torch.Generator().manual_seed(config['seed'])
     train_loader = DataLoader(train, batch_size=config['batch_size'], shuffle=True,
                               generator=generator, num_workers=0, pin_memory=device.type == 'cuda')

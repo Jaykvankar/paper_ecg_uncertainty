@@ -1,0 +1,34 @@
+{
+  "fit_split": "validation_fold9_pooled",
+  "n_samples": 4292,
+  "mean": [
+    0.5225983819334631,
+    0.32262648516290754,
+    0.3692519541173799,
+    0.008626370479386854,
+    0.08419825218662431,
+    0.008644267798091552,
+    0.17059201730873322,
+    2.033441227295706
+  ],
+  "std": [
+    1.00860922203704,
+    0.46044233389139494,
+    0.16890195686392553,
+    0.005945404749449287,
+    0.05636138093757976,
+    0.008966349018371575,
+    0.17715552855334007,
+    0.6898435827909642
+  ],
+  "feature_names": [
+    "phi_1_einthoven_residual",
+    "phi_2_goldberger_residual",
+    "phi_3_precordial_subspace_residual",
+    "phi_4_vertical_spike_rate",
+    "phi_5_peak_clipping_index",
+    "phi_6_out_of_band_hf_ratio",
+    "phi_7_tp_to_qrs_slew_ratio",
+    "phi_8_voltage_excursion_proxy"
+  ]
+}

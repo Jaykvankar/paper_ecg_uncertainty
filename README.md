@@ -1,21 +1,12 @@
-# Diagnosis-Aware Uncertainty for Paper-ECG Pipelines
+# Paper-ECG calibration under tracing error
 
-This research project is intended to study uncertainty in ECG analysis pipelines,
-with a focus on digitizing ECGs from paper images and understanding how diagnostic
-context affects the resulting measurements and predictions.
+The locked question is whether tracing a synthetic PTB-XL paper page changes classwise calibration, and whether that change differs by diagnosis. The classifier and the page tracer are existing tools. Diagnosis is an outcome, not an input. The full lock is `PROTOCOL.md`.
 
 ## Current status
 
-The repository currently implements the data-preparation foundation using the
-PTB-XL 1.0.3 dataset. It downloads and validates the 100 Hz digital ECG records,
-builds diagnostic multi-labels, and checks that the official train, validation,
-and test splits do not share patients.
+Both arms are trained, and clean fold-10 scores are in `results/stage2` and `results/stage2_raw`. A creased-page rerun of fold 10 matched the locked classwise calibration shifts in `results/paired_standardized.json` and `results/paired_raw_mv.json`. Those locked files were not rewritten. The same rerun stores a patient bootstrap of the raw-minus-standardized difference. The five classwise shifts stay the primary result. A conduction-disturbance corrector target is secondary.
 
-Stage 2 training and clean-test evaluation are implemented and locally smoke-tested.
-Full baseline training has not yet been run. The saved Stage 0/1 results validate
-the input data and labels only; they do not test the research hypothesis or support
-clinical conclusions. Paper-image generation, digitization, and Stage 3/4 evaluation
-are not implemented yet.
+Research training uses one NVIDIA GPU through CUDA 12.4. The same code runs in Google Colab and on a laptop with an RTX 40-series GPU. A run stops if no NVIDIA GPU is visible. `--smoke` is the only CPU training check. Checkpoints from the two machines stay in different directories. Score fold 10 once per arm.
 
 ## Data pipeline
 
@@ -53,10 +44,10 @@ To validate an already-downloaded dataset without downloading again, run
 
 ## Repository contents
 
-- `src/`: environment recording and PTB-XL download, validation, and label
-  generation.
+- `src/`: data checks, the CUDA training run, the page renderer, the trace check, and the paired scorer.
 - `configs/pilot.yaml`: dataset location, labels, split definitions, and seed.
-- `tests/`: regression checks for label aggregation and patient leakage.
+- `configs/paired.yaml`: the locked calibration question. `PROTOCOL.md` is the same lock in words.
+- `tests/`: label, leakage, training, and trace-check tests.
 - `results/`: generated environment metadata, split class counts, per-record
   labels, and pipeline configuration/source-hash metadata.
 
@@ -66,8 +57,8 @@ model-performance or clinical evaluation results.
 ## Continue in Colab from VS Code
 
 The notebook `notebooks/colab_pilot.ipynb` preserves the original GPU check and adds
-transfer, Drive backup, isolated Python setup, training/resume, evaluation, and export
-cells. Run them one at a time. **The local terminal is not the Colab kernel.**
+transfer, Drive backup, isolated Python setup, both training arms, the trace check,
+paired scoring, and export cells. Run them one at a time. **The local terminal is not the Colab kernel.**
 
 1. In this local workspace, generate the transfer bundle and update the notebook:
 
@@ -88,8 +79,25 @@ cells. Run them one at a time. **The local terminal is not the Colab kernel.**
 6. Run the Stage 2 training cell. Its output directory is on Drive, so the last
    completed epoch's model, optimizer, scheduler, scaler and RNG states persist.
    Reconnect, repeat setup, and run the training cell again to resume automatically.
-7. Run clean-test evaluation only after validation passes the review gate. Share
-   `clean_baseline.json` and `REPORT.md` before proceeding to Stage 3.
+7. Run the raw-millivolt arm in its own Drive folder. It uses the same seed and
+   network and keeps absolute voltage.
+8. Run the printed-page check on training record `00001_lr`. Paired fold-10 scoring
+   stays blocked until every recovered lead correlates with the clean lead.
+9. Run clean-test evaluation only after validation passes the review gate. Share
+   `clean_baseline.json` and `REPORT.md`. Then run one paired score per arm.
+
+The laptop uses the same commands from the project root, with local output folders:
+
+```bash
+python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+python -m pip install -r requirements.txt -r requirements-paper.txt
+python -u -m src.train --output-dir results/stage2
+python -u -m src.train --config configs/stage2_raw.yaml --output-dir results/stage2_raw
+python -m src.digitize --check
+python -u -m src.eval --run-dir results/stage2
+```
+
+If both machines train, keep the checkpoints apart and score fold 10 once per arm.
 
 Remote execution and Drive authorization must be performed in the connected notebook;
 the local assistant's shell cannot operate that GPU runtime. No full GPU result is
@@ -103,8 +111,9 @@ Official extension guide: https://github.com/googlecolab/colab-vscode/wiki/User-
 
 - Compact 1D residual network, BCE-with-logits, AdamW and cosine learning-rate schedule.
   Seed 42, 30 epochs, batch size 64; all settings in `configs/stage2.yaml`.
-- Each recording is standardized separately per lead across time with epsilon 1e-6.
-  This uses no pooled validation/test statistics, but removes absolute voltage scale.
+- Each recording in the standardized arm is standardized separately per lead across
+  time with epsilon 1e-6. The raw-millivolt arm, `configs/stage2_raw.yaml`, keeps
+  absolute voltage. Neither arm uses pooled validation or test statistics.
 - Exclude missing diagnostic targets from supervised learning/evaluation: 334 train,
   37 validation, 40 test. Retained sizes: 17,084 / 2,146 / 2,158.
 - Checkpoint selection uses validation macro AUROC only. The test split is loaded
@@ -115,9 +124,11 @@ Official extension guide: https://github.com/googlecolab/colab-vscode/wiki/User-
 - Validation macro AUROC below 0.88 stops the evaluation workflow for investigation.
   This is an explicit debugging heuristic, not a guaranteed benchmark performance.
   A low clean-test AUROC is flagged for review; do not tune using test performance.
-- CUDA uses automatic mixed precision; CPU uses float32. One GPU is used even if
-  more are visible. Deterministic algorithms and RNG states are recorded, but exact
-  reproducibility across different hardware/software is not guaranteed.
+- CUDA automatic mixed precision is used when `device: cuda` and a GPU is visible.
+  Research configs stop if no NVIDIA GPU is visible. `--smoke` forces CPU and is
+  not a baseline. One GPU is used even if more are visible. Deterministic algorithms
+  and RNG states are recorded. Exact bitwise agreement between a Colab T4 and a
+  40-series GPU is not expected; the run records the GPU name.
 - Waveforms are read into RAM once per process (about 1 GB for train/validation).
   Resuming reloads local waveforms, not the Stage 1 download/validation pipeline.
 
@@ -149,6 +160,4 @@ by Git. Metrics and predictions are saved in the run directory alongside a repor
 
 ## What remains
 
-Run and review the full Stage 2 clean baseline on Colab. Stage 3 then requires image
-generation and testing digitizer candidates before selecting one; it cannot be
-reported complete from environment checks or a smoke test.
+Copy the D0 color-scan variant id from `dataset_description.xlsx` into `configs/paired.yaml` before scoring real scans. Until that id and the images are on disk, the training-fold gate stays blocked and no fold-10 scan file is written. Printed and noisy pages are not a new primary.

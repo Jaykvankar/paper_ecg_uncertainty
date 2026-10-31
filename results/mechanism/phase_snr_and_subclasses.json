@@ -1,0 +1,1215 @@
+{
+  "status": "completed",
+  "n_total_records": 2158,
+  "phase_snr_by_cd": {
+    "CD_positive": {
+      "n_records": 496,
+      "QRS_snr_db": {
+        "mean": 9.794568710878798,
+        "std": 3.914623182230857,
+        "median": 10.182443203582677,
+        "count": 496
+      },
+      "ST_T_snr_db": {
+        "mean": 15.427895825640837,
+        "std": 6.889272459135375,
+        "median": 16.129625419727155,
+        "count": 496
+      },
+      "TP_snr_db": {
+        "mean": 15.023961162525502,
+        "std": 7.266994551116457,
+        "median": 16.206629178151335,
+        "count": 489
+      },
+      "TP_full_snr_db": {
+        "mean": 13.054975837127694,
+        "std": 7.328226499526258,
+        "median": 13.600527285171818,
+        "count": 496
+      },
+      "qrs_slew_rate_correlation": {
+        "mean": 0.6418456622608006,
+        "std": 0.2288647181215618,
+        "median": 0.6726701125205106,
+        "count": 496
+      },
+      "qrs_peak_clipping_ratio": {
+        "mean": 0.86688473819459,
+        "std": 0.10007977227194408,
+        "median": 0.8797169202891391,
+        "count": 496
+      }
+    },
+    "CD_negative": {
+      "n_records": 1662,
+      "QRS_snr_db": {
+        "mean": 9.836733347784474,
+        "std": 3.3881129268901846,
+        "median": 10.261438512911607,
+        "count": 1662
+      },
+      "ST_T_snr_db": {
+        "mean": 16.42070970911005,
+        "std": 6.725007208195382,
+        "median": 17.296690365770242,
+        "count": 1662
+      },
+      "TP_snr_db": {
+        "mean": 16.826404277338135,
+        "std": 7.046005667888059,
+        "median": 17.792124818263478,
+        "count": 1651
+      },
+      "TP_full_snr_db": {
+        "mean": 14.718359943543541,
+        "std": 7.0131117645487375,
+        "median": 15.813445651981738,
+        "count": 1662
+      },
+      "qrs_slew_rate_correlation": {
+        "mean": 0.7232215389637984,
+        "std": 0.18501034613027517,
+        "median": 0.7745708686090623,
+        "count": 1662
+      },
+      "qrs_peak_clipping_ratio": {
+        "mean": 0.8697843413330428,
+        "std": 0.09628036900862497,
+        "median": 0.8768416109441766,
+        "count": 1662
+      }
+    },
+    "contrast_CD_minus_nonCD": {
+      "QRS_snr_db_diff": -0.04216463690567629,
+      "ST_T_snr_db_diff": -0.9928138834692124,
+      "TP_snr_db_diff": -1.8024431148126308,
+      "qrs_slew_rate_correlation_diff": -0.08137587670299773,
+      "qrs_peak_clipping_ratio_diff": -0.002899603138452833
+    }
+  },
+  "directional_probability_shifts": {
+    "superclasses": {
+      "NORM": {
+        "n_positives": 963,
+        "n_negatives": 1195,
+        "raw_mv": {
+          "mean_shift_positives": -0.23882977664470673,
+          "mean_shift_negatives": -0.05847499147057533
+        },
+        "standardized": {
+          "mean_shift_positives": -0.22821196913719177,
+          "mean_shift_negatives": -0.06664224714040756
+        }
+      },
+      "MI": {
+        "n_positives": 550,
+        "n_negatives": 1608,
+        "raw_mv": {
+          "mean_shift_positives": 0.05629212409257889,
+          "mean_shift_negatives": 0.14669527113437653
+        },
+        "standardized": {
+          "mean_shift_positives": 0.06831950694322586,
+          "mean_shift_negatives": 0.13919728994369507
+        }
+      },
+      "STTC": {
+        "n_positives": 521,
+        "n_negatives": 1637,
+        "raw_mv": {
+          "mean_shift_positives": -0.2505814731121063,
+          "mean_shift_negatives": 0.00017081241821870208
+        },
+        "standardized": {
+          "mean_shift_positives": -0.1292402446269989,
+          "mean_shift_negatives": 0.04879150167107582
+        }
+      },
+      "CD": {
+        "n_positives": 496,
+        "n_negatives": 1662,
+        "raw_mv": {
+          "mean_shift_positives": 0.037019290030002594,
+          "mean_shift_negatives": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_positives": -0.04404972121119499,
+          "mean_shift_negatives": 0.05797300487756729
+        }
+      },
+      "HYP": {
+        "n_positives": 262,
+        "n_negatives": 1896,
+        "raw_mv": {
+          "mean_shift_positives": -0.3681538999080658,
+          "mean_shift_negatives": -0.03158049285411835
+        },
+        "standardized": {
+          "mean_shift_positives": -0.18834680318832397,
+          "mean_shift_negatives": -0.016125254333019257
+        }
+      }
+    },
+    "subclasses": {
+      "CLBBB": {
+        "target_super_diagnosis": "CD",
+        "n_cases": 54,
+        "n_controls": 1662,
+        "raw_mv": {
+          "mean_shift_cases": -0.04560059681534767,
+          "mean_shift_controls": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_cases": -0.17261259257793427,
+          "mean_shift_controls": 0.05797300487756729
+        }
+      },
+      "CRBBB": {
+        "target_super_diagnosis": "CD",
+        "n_cases": 54,
+        "n_controls": 1662,
+        "raw_mv": {
+          "mean_shift_cases": -0.02281130664050579,
+          "mean_shift_controls": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_cases": -0.06284032016992569,
+          "mean_shift_controls": 0.05797300487756729
+        }
+      },
+      "IRBBB": {
+        "target_super_diagnosis": "CD",
+        "n_cases": 112,
+        "n_controls": 1662,
+        "raw_mv": {
+          "mean_shift_cases": 0.025952015072107315,
+          "mean_shift_controls": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_cases": -0.03804455325007439,
+          "mean_shift_controls": 0.05797300487756729
+        }
+      },
+      "LAFB/LPFB": {
+        "target_super_diagnosis": "CD",
+        "n_cases": 179,
+        "n_controls": 1662,
+        "raw_mv": {
+          "mean_shift_cases": -0.01775273308157921,
+          "mean_shift_controls": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_cases": -0.0567316859960556,
+          "mean_shift_controls": 0.05797300487756729
+        }
+      },
+      "1AVB": {
+        "target_super_diagnosis": "CD",
+        "n_cases": 79,
+        "n_controls": 1662,
+        "raw_mv": {
+          "mean_shift_cases": 0.06862914562225342,
+          "mean_shift_controls": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_cases": -0.061257295310497284,
+          "mean_shift_controls": 0.05797300487756729
+        }
+      },
+      "IVCD": {
+        "target_super_diagnosis": "CD",
+        "n_cases": 79,
+        "n_controls": 1662,
+        "raw_mv": {
+          "mean_shift_cases": 0.16179360449314117,
+          "mean_shift_controls": 0.18760959804058075
+        },
+        "standardized": {
+          "mean_shift_cases": 0.031675074249506,
+          "mean_shift_controls": 0.05797300487756729
+        }
+      },
+      "LVH": {
+        "target_super_diagnosis": "HYP",
+        "n_cases": 214,
+        "n_controls": 1896,
+        "raw_mv": {
+          "mean_shift_cases": -0.44277432560920715,
+          "mean_shift_controls": -0.03158049285411835
+        },
+        "standardized": {
+          "mean_shift_cases": -0.22760902345180511,
+          "mean_shift_controls": -0.016125254333019257
+        }
+      }
+    }
+  },
+  "subclasses_positives_only": {
+    "CLBBB": {
+      "subclass": "CLBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 54,
+      "unique_patients": 42,
+      "standardized": {
+        "clean_ece": 0.041615613632732,
+        "paper_ece": 0.21422822925227658,
+        "delta_ece": 0.17261261561954458,
+        "clean_brier": 0.014802632231456734,
+        "paper_brier": 0.11540450771729577,
+        "delta_brier": 0.10060187548583903,
+        "clean_entropy_nats": 0.10223347760682698,
+        "paper_entropy_nats": 0.3202246656878389,
+        "delta_entropy_nats": 0.21799118808101192
+      },
+      "raw_mv": {
+        "clean_ece": 0.014047096172968586,
+        "paper_ece": 0.05964769257439506,
+        "delta_ece": 0.045600596401426476,
+        "clean_brier": 0.0012026296317403085,
+        "paper_brier": 0.00921531957725779,
+        "delta_brier": 0.008012689945517482,
+        "clean_entropy_nats": 0.057527154309169784,
+        "paper_entropy_nats": 0.1862390232355311,
+        "delta_entropy_nats": 0.12871186892636133
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.1270120192181181,
+        "delta_ece_contrast_ci95_low": -0.1850961023759272,
+        "delta_ece_contrast_ci95_high": -0.07771637722838759,
+        "delta_brier_contrast": -0.09258918554032154,
+        "delta_entropy_contrast": -0.0892793191546506
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 8.609746738951829,
+        "mean_st_snr_db": 12.246039575252693,
+        "mean_tp_snr_db": 11.121740124328765,
+        "qrs_slew_rate_correlation": 0.39578610448322743,
+        "qrs_peak_clipping_ratio": 0.8148630086546396
+      }
+    },
+    "CRBBB": {
+      "subclass": "CRBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 54,
+      "unique_patients": 45,
+      "standardized": {
+        "clean_ece": 0.05275018016497292,
+        "paper_ece": 0.11559050226653066,
+        "delta_ece": 0.06284032210155774,
+        "clean_brier": 0.010945290821509161,
+        "paper_brier": 0.03633004504543748,
+        "delta_brier": 0.025384754223928316,
+        "clean_entropy_nats": 0.1555976684992261,
+        "paper_entropy_nats": 0.26643070680433684,
+        "delta_entropy_nats": 0.11083303830511074
+      },
+      "raw_mv": {
+        "clean_ece": 0.01371905759528829,
+        "paper_ece": 0.036530363338965,
+        "delta_ece": 0.022811305743676707,
+        "clean_brier": 0.0007678367163737537,
+        "paper_brier": 0.0034835871893501404,
+        "delta_brier": 0.0027157504729763866,
+        "clean_entropy_nats": 0.06075008263203697,
+        "paper_entropy_nats": 0.13395803253451388,
+        "delta_entropy_nats": 0.07320794990247692
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.04002901635788103,
+        "delta_ece_contrast_ci95_low": -0.06118278660946895,
+        "delta_ece_contrast_ci95_high": -0.023383057242483237,
+        "delta_brier_contrast": -0.02266900375095193,
+        "delta_entropy_contrast": -0.037625088402633816
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 10.73292997283569,
+        "mean_st_snr_db": 16.040394360728364,
+        "mean_tp_snr_db": 15.452326984437047,
+        "qrs_slew_rate_correlation": 0.6068289164446321,
+        "qrs_peak_clipping_ratio": 0.9029268486981324
+      }
+    },
+    "IRBBB": {
+      "subclass": "IRBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 112,
+      "unique_patients": 106,
+      "standardized": {
+        "clean_ece": 0.41246656536324217,
+        "paper_ece": 0.45051112029302337,
+        "delta_ece": 0.038044554929781205,
+        "clean_brier": 0.2833911581789583,
+        "paper_brier": 0.30688689979867323,
+        "delta_brier": 0.023495741619714905,
+        "clean_entropy_nats": 0.398418479289468,
+        "paper_entropy_nats": 0.4401940309462085,
+        "delta_entropy_nats": 0.04177555165674052
+      },
+      "raw_mv": {
+        "clean_ece": 0.2697801940542246,
+        "paper_ece": 0.24382817818384084,
+        "delta_ece": -0.02595201587038376,
+        "clean_brier": 0.1591671562896635,
+        "paper_brier": 0.10693550231210584,
+        "delta_brier": -0.05223165397755765,
+        "clean_entropy_nats": 0.3511226623597085,
+        "paper_entropy_nats": 0.42225682181702445,
+        "delta_entropy_nats": 0.07113415945731594
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.06399657080016496,
+        "delta_ece_contrast_ci95_low": -0.09618586066882749,
+        "delta_ece_contrast_ci95_high": -0.03334960125630405,
+        "delta_brier_contrast": -0.07572739559727255,
+        "delta_entropy_contrast": 0.02935860780057542
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.717650161473989,
+        "mean_st_snr_db": 17.569292694616642,
+        "mean_tp_snr_db": 16.27527788890653,
+        "qrs_slew_rate_correlation": 0.6899670565989668,
+        "qrs_peak_clipping_ratio": 0.8708823389858706
+      }
+    },
+    "LAFB/LPFB": {
+      "subclass": "LAFB/LPFB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 179,
+      "unique_patients": 165,
+      "standardized": {
+        "clean_ece": 0.24360646680972992,
+        "paper_ece": 0.30033815174504036,
+        "delta_ece": 0.056731684935310445,
+        "clean_brier": 0.14967457023319738,
+        "paper_brier": 0.18436044032576077,
+        "delta_brier": 0.03468587009256338,
+        "clean_entropy_nats": 0.30288555137314455,
+        "paper_entropy_nats": 0.3668022513402723,
+        "delta_entropy_nats": 0.06391669996712773
+      },
+      "raw_mv": {
+        "clean_ece": 0.1572034725315827,
+        "paper_ece": 0.1749562035996321,
+        "delta_ece": 0.017752731068049393,
+        "clean_brier": 0.0792628313484261,
+        "paper_brier": 0.07113874585276143,
+        "delta_brier": -0.008124085495664665,
+        "clean_entropy_nats": 0.2559423537165878,
+        "paper_entropy_nats": 0.33985741555694493,
+        "delta_entropy_nats": 0.08391506184035713
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.03897895386726105,
+        "delta_ece_contrast_ci95_low": -0.06361999984198718,
+        "delta_ece_contrast_ci95_high": -0.01472826326046993,
+        "delta_brier_contrast": -0.042809955588228046,
+        "delta_entropy_contrast": 0.019998361873229398
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.906139676571172,
+        "mean_st_snr_db": 15.052999597915203,
+        "mean_tp_snr_db": 14.72626063882942,
+        "qrs_slew_rate_correlation": 0.640330931869451,
+        "qrs_peak_clipping_ratio": 0.8800603251573453
+      }
+    },
+    "1AVB": {
+      "subclass": "1AVB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 79,
+      "unique_patients": 69,
+      "standardized": {
+        "clean_ece": 0.41047205349218246,
+        "paper_ece": 0.4717293425074106,
+        "delta_ece": 0.061257289015228145,
+        "clean_brier": 0.28513483417903285,
+        "paper_brier": 0.3208273810231171,
+        "delta_brier": 0.03569254684408424,
+        "clean_entropy_nats": 0.3846878297744109,
+        "paper_entropy_nats": 0.4592679254169393,
+        "delta_entropy_nats": 0.07458009564252838
+      },
+      "raw_mv": {
+        "clean_ece": 0.3457807534951953,
+        "paper_ece": 0.2771516097120092,
+        "delta_ece": -0.06862914378318613,
+        "clean_brier": 0.22381360799438832,
+        "paper_brier": 0.1356084090642467,
+        "delta_brier": -0.08820519893014162,
+        "clean_entropy_nats": 0.3744305822891484,
+        "paper_entropy_nats": 0.436605639047303,
+        "delta_entropy_nats": 0.0621750567581546
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.12988643279841428,
+        "delta_ece_contrast_ci95_low": -0.17978724024180434,
+        "delta_ece_contrast_ci95_high": -0.07942472095794338,
+        "delta_brier_contrast": -0.12389774577422585,
+        "delta_entropy_contrast": -0.012405038884373776
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.601743914888564,
+        "mean_st_snr_db": 14.86327125375747,
+        "mean_tp_snr_db": 14.82680919401017,
+        "qrs_slew_rate_correlation": 0.6367388561894725,
+        "qrs_peak_clipping_ratio": 0.8745829883536034
+      }
+    },
+    "IVCD": {
+      "subclass": "IVCD",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 79,
+      "unique_patients": 77,
+      "standardized": {
+        "clean_ece": 0.7167855386321633,
+        "paper_ece": 0.6851104630534596,
+        "delta_ece": -0.03167507557870375,
+        "clean_brier": 0.6226609822265065,
+        "paper_brier": 0.5559141568577796,
+        "delta_brier": -0.06674682536872689,
+        "clean_entropy_nats": 0.2996436961888251,
+        "paper_entropy_nats": 0.40328687695681575,
+        "delta_entropy_nats": 0.10364318076799067
+      },
+      "raw_mv": {
+        "clean_ece": 0.6274392940428202,
+        "paper_ece": 0.46564569015385976,
+        "delta_ece": -0.1617936038889604,
+        "clean_brier": 0.5144772282971088,
+        "paper_brier": 0.31087911827329334,
+        "delta_brier": -0.2035981100238155,
+        "clean_entropy_nats": 0.3603793649143052,
+        "paper_entropy_nats": 0.4734903289486007,
+        "delta_entropy_nats": 0.11311096403429549
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.13011852831025666,
+        "delta_ece_contrast_ci95_low": -0.17247754525134623,
+        "delta_ece_contrast_ci95_high": -0.08791101229979136,
+        "delta_brier_contrast": -0.1368512846550886,
+        "delta_entropy_contrast": 0.009467783266304819
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.681129220977306,
+        "mean_st_snr_db": 15.285530094606846,
+        "mean_tp_snr_db": 15.454310495148949,
+        "qrs_slew_rate_correlation": 0.6735585523084273,
+        "qrs_peak_clipping_ratio": 0.846874517005411
+      }
+    },
+    "LVH": {
+      "subclass": "LVH",
+      "parent_category": "HYP",
+      "target_super_diagnosis": "HYP",
+      "n_records": 214,
+      "unique_patients": 202,
+      "standardized": {
+        "clean_ece": 0.692806984145612,
+        "paper_ece": 0.9204160126413559,
+        "delta_ece": 0.22760902849574383,
+        "clean_brier": 0.5579961072832001,
+        "paper_brier": 0.8552204241683308,
+        "delta_brier": 0.2972243168851306,
+        "clean_entropy_nats": 0.41538301572823316,
+        "paper_entropy_nats": 0.23740562104982882,
+        "delta_entropy_nats": -0.17797739467840434
+      },
+      "raw_mv": {
+        "clean_ece": 0.4864956671241496,
+        "paper_ece": 0.9292699866057764,
+        "delta_ece": 0.4427743194816268,
+        "clean_brier": 0.3367200292084707,
+        "paper_brier": 0.8677664388163767,
+        "delta_brier": 0.531046409607906,
+        "clean_entropy_nats": 0.4551065794438273,
+        "paper_entropy_nats": 0.23188034082377773,
+        "delta_entropy_nats": -0.2232262386200496
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.215165290985883,
+        "delta_ece_contrast_ci95_low": 0.18359155924061815,
+        "delta_ece_contrast_ci95_high": 0.24480702225981937,
+        "delta_brier_contrast": 0.23382209272277532,
+        "delta_entropy_contrast": -0.045248843941645245
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 6.049170025694642,
+        "mean_st_snr_db": 8.588928851770325,
+        "mean_tp_snr_db": 8.45802535176112,
+        "qrs_slew_rate_correlation": 0.5524665566115028,
+        "qrs_peak_clipping_ratio": 0.828414204797051
+      },
+      "voltage_criteria_details": {
+        "n_lvh_records": 214,
+        "sokolow_lyon": {
+          "clean_mean_mv": 3.885780381543614,
+          "clean_std_mv": 1.3738108385379302,
+          "traced_mean_mv": 3.2764944633177144,
+          "traced_std_mv": 1.105831532539929,
+          "mean_attenuation_mv": -0.6092859182258994,
+          "ratio_traced_over_clean_mean": 0.8608314451254908,
+          "ratio_traced_over_clean_median": 0.9035402175676603,
+          "pearson_r": 0.7920410627257359,
+          "pearson_pvalue": 2.505086746791106e-47,
+          "spearman_rho": 0.8026076412733391,
+          "spearman_pvalue": 1.833101432087003e-49,
+          "corr_voltage_change_with_delta_hyp_prob": 0.35064554598465286
+        },
+        "cornell": {
+          "clean_mean_mv": 2.6249486006030414,
+          "clean_std_mv": 1.1596819479100602,
+          "traced_mean_mv": 2.2467633177812156,
+          "traced_std_mv": 1.015145866361878,
+          "mean_attenuation_mv": -0.3781852828218253,
+          "ratio_traced_over_clean_mean": 0.8666840823965063,
+          "ratio_traced_over_clean_median": 0.885239254657638,
+          "pearson_r": 0.8565478236538083,
+          "pearson_pvalue": 7.917401760050653e-63,
+          "spearman_rho": 0.9122630220589898,
+          "spearman_pvalue": 3.9732268457318248e-84,
+          "corr_voltage_change_with_delta_hyp_prob": 0.2431101929230672
+        }
+      }
+    }
+  },
+  "subclasses_case_control": {
+    "CLBBB": {
+      "subclass": "CLBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_cases": 54,
+      "n_controls": 1662,
+      "n_total": 1716,
+      "unique_patients": 1519,
+      "standardized": {
+        "clean_ece": 0.0665532227735056,
+        "paper_ece": 0.11727003695299856,
+        "delta_ece": 0.05071681417949296,
+        "clean_brier": 0.028583054944128546,
+        "paper_brier": 0.05007301288451158,
+        "delta_brier": 0.021489957940383036,
+        "clean_entropy_nats": 0.1454811825876105,
+        "paper_entropy_nats": 0.2718283834096892,
+        "delta_entropy_nats": 0.12634720082207868
+      },
+      "raw_mv": {
+        "clean_ece": 0.11455863679968564,
+        "paper_ece": 0.29482944990734306,
+        "delta_ece": 0.1802708131076574,
+        "clean_brier": 0.050372444056586495,
+        "paper_brier": 0.15662325094527577,
+        "delta_brier": 0.10625080688868926,
+        "clean_entropy_nats": 0.22149129490891767,
+        "paper_entropy_nats": 0.4361358499105681,
+        "delta_entropy_nats": 0.21464455500165042
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.12955399892816444,
+        "delta_ece_contrast_ci95_low": 0.12077471393228267,
+        "delta_ece_contrast_ci95_high": 0.13825230544598374,
+        "delta_brier_contrast": 0.08476084894830622,
+        "delta_entropy_contrast": 0.08829735417957174
+      }
+    },
+    "CRBBB": {
+      "subclass": "CRBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_cases": 54,
+      "n_controls": 1662,
+      "n_total": 1716,
+      "unique_patients": 1521,
+      "standardized": {
+        "clean_ece": 0.06620283431619732,
+        "paper_ece": 0.12037402136863393,
+        "delta_ece": 0.054171187052436606,
+        "clean_brier": 0.028461670074584743,
+        "paper_brier": 0.04758465566756498,
+        "delta_brier": 0.019122985592980236,
+        "clean_entropy_nats": 0.1471604753080007,
+        "paper_entropy_nats": 0.2701355665217468,
+        "delta_entropy_nats": 0.12297509121374611
+      },
+      "raw_mv": {
+        "clean_ece": 0.11456895969199025,
+        "paper_ece": 0.2955569183098566,
+        "delta_ece": 0.18098795861786632,
+        "clean_brier": 0.05035876176204699,
+        "paper_brier": 0.15644288174425766,
+        "delta_brier": 0.10608411998221068,
+        "clean_entropy_nats": 0.22159271573026662,
+        "paper_entropy_nats": 0.4344906439094871,
+        "delta_entropy_nats": 0.21289792817922049
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.1268167715654297,
+        "delta_ece_contrast_ci95_low": 0.11793805345568928,
+        "delta_ece_contrast_ci95_high": 0.13628121521604142,
+        "delta_brier_contrast": 0.08696113438923045,
+        "delta_entropy_contrast": 0.08992283696547437
+      }
+    },
+    "IRBBB": {
+      "subclass": "IRBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_cases": 112,
+      "n_controls": 1662,
+      "n_total": 1774,
+      "unique_patients": 1574,
+      "standardized": {
+        "clean_ece": 0.039603336017373175,
+        "paper_ece": 0.09151435305419947,
+        "delta_ece": 0.051911017036826296,
+        "clean_brier": 0.04508962224333103,
+        "paper_brier": 0.06429807185486995,
+        "delta_brier": 0.01920844961153892,
+        "clean_entropy_nats": 0.1627666128579433,
+        "paper_entropy_nats": 0.2809848395996949,
+        "delta_entropy_nats": 0.11821822674175159
+      },
+      "raw_mv": {
+        "clean_ece": 0.09420844543829067,
+        "paper_ece": 0.27161192530069206,
+        "delta_ece": 0.1774034798624014,
+        "clean_brier": 0.05873782046529356,
+        "paper_brier": 0.15797330756701078,
+        "delta_brier": 0.09923548710171723,
+        "clean_entropy_nats": 0.23466647909543117,
+        "paper_entropy_nats": 0.4428663896478708,
+        "delta_entropy_nats": 0.2081999105524396
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.1254924628255751,
+        "delta_ece_contrast_ci95_low": 0.11745799917626892,
+        "delta_ece_contrast_ci95_high": 0.13623106255386583,
+        "delta_brier_contrast": 0.08002703749017831,
+        "delta_entropy_contrast": 0.08998168381068802
+      }
+    },
+    "LAFB/LPFB": {
+      "subclass": "LAFB/LPFB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_cases": 179,
+      "n_controls": 1662,
+      "n_total": 1841,
+      "unique_patients": 1636,
+      "standardized": {
+        "clean_ece": 0.039569264452233285,
+        "paper_ece": 0.08638955927680948,
+        "delta_ece": 0.0468202948245762,
+        "clean_brier": 0.04076096046462154,
+        "paper_brier": 0.06121345220608315,
+        "delta_brier": 0.02045249174146161,
+        "clean_entropy_nats": 0.16205410930220743,
+        "paper_entropy_nats": 0.27964311622693755,
+        "delta_entropy_nats": 0.11758900692473012
+      },
+      "raw_mv": {
+        "clean_ece": 0.09190751893451794,
+        "paper_ece": 0.2595497832676175,
+        "delta_ece": 0.1676422643330996,
+        "clean_brier": 0.05462369299965058,
+        "paper_brier": 0.15263536494979119,
+        "delta_brier": 0.0980116719501406,
+        "clean_entropy_nats": 0.2296503406009108,
+        "paper_entropy_nats": 0.4341046651692066,
+        "delta_entropy_nats": 0.2044543245682958
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.12082196950852339,
+        "delta_ece_contrast_ci95_low": 0.11260789976227877,
+        "delta_ece_contrast_ci95_high": 0.13028026247935529,
+        "delta_brier_contrast": 0.077559180208679,
+        "delta_entropy_contrast": 0.08686531764356567
+      }
+    },
+    "1AVB": {
+      "subclass": "1AVB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_cases": 79,
+      "n_controls": 1662,
+      "n_total": 1741,
+      "unique_patients": 1535,
+      "standardized": {
+        "clean_ece": 0.0482626543306265,
+        "paper_ece": 0.10082543924921486,
+        "delta_ece": 0.05256278491858836,
+        "clean_brier": 0.04065182771037882,
+        "paper_brier": 0.06033245823889383,
+        "delta_brier": 0.019680630528515007,
+        "clean_entropy_nats": 0.15767687540594458,
+        "paper_entropy_nats": 0.2788325905179906,
+        "delta_entropy_nats": 0.12115571511204601
+      },
+      "raw_mv": {
+        "clean_ece": 0.09765909501176359,
+        "paper_ece": 0.2798698071641409,
+        "delta_ece": 0.1822107121523773,
+        "clean_brier": 0.059767631839486,
+        "paper_brier": 0.16024177810511012,
+        "delta_brier": 0.10047414626562412,
+        "clean_entropy_nats": 0.23351672127044815,
+        "paper_entropy_nats": 0.4439081313478191,
+        "delta_entropy_nats": 0.21039141007737094
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.12964792723378893,
+        "delta_ece_contrast_ci95_low": 0.12090051995097859,
+        "delta_ece_contrast_ci95_high": 0.13997948753832495,
+        "delta_brier_contrast": 0.0807935157371091,
+        "delta_entropy_contrast": 0.08923569496532494
+      }
+    },
+    "IVCD": {
+      "subclass": "IVCD",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_cases": 79,
+      "n_controls": 1662,
+      "n_total": 1741,
+      "unique_patients": 1540,
+      "standardized": {
+        "clean_ece": 0.05303821855511595,
+        "paper_ece": 0.09114301045935966,
+        "delta_ece": 0.03810479190424371,
+        "clean_brier": 0.0559674886499253,
+        "paper_brier": 0.0709998076305873,
+        "delta_brier": 0.015032318980662006,
+        "clean_entropy_nats": 0.15381789404278468,
+        "paper_entropy_nats": 0.27629238211572194,
+        "delta_entropy_nats": 0.12247448807293726
+      },
+      "raw_mv": {
+        "clean_ece": 0.08527767315330007,
+        "paper_ece": 0.27131665819521145,
+        "delta_ece": 0.18603898504191138,
+        "clean_brier": 0.07295684838395179,
+        "paper_brier": 0.16819490046439486,
+        "delta_brier": 0.09523805208044307,
+        "clean_entropy_nats": 0.2328791301316701,
+        "paper_entropy_nats": 0.44558181917217443,
+        "delta_entropy_nats": 0.21270268904050432
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.14793419313766767,
+        "delta_ece_contrast_ci95_low": 0.1333972552326667,
+        "delta_ece_contrast_ci95_high": 0.15932529105667728,
+        "delta_brier_contrast": 0.08020573309978107,
+        "delta_entropy_contrast": 0.09022820096756706
+      }
+    },
+    "LVH": {
+      "subclass": "LVH",
+      "parent_category": "HYP",
+      "target_super_diagnosis": "HYP",
+      "n_cases": 214,
+      "n_controls": 1896,
+      "n_total": 2110,
+      "unique_patients": 1842,
+      "standardized": {
+        "clean_ece": 0.03349515971708463,
+        "paper_ece": 0.06668353895226413,
+        "delta_ece": 0.0331883792351795,
+        "clean_brier": 0.06835718110482102,
+        "paper_brier": 0.09001640246826624,
+        "delta_brier": 0.021659221363445225,
+        "clean_entropy_nats": 0.1623811085914545,
+        "paper_entropy_nats": 0.13292375132265016,
+        "delta_entropy_nats": -0.02945735726880433
+      },
+      "raw_mv": {
+        "clean_ece": 0.012759809235430334,
+        "paper_ece": 0.07227430495603028,
+        "delta_ece": 0.05951449572059995,
+        "clean_brier": 0.04899323597559351,
+        "paper_brier": 0.08964973492282587,
+        "delta_brier": 0.040656498947232354,
+        "clean_entropy_nats": 0.17676121161073072,
+        "paper_entropy_nats": 0.11357418713417021,
+        "delta_entropy_nats": -0.06318702447656051
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.02632611648542045,
+        "delta_ece_contrast_ci95_low": 0.010043514285766721,
+        "delta_ece_contrast_ci95_high": 0.03570926787302327,
+        "delta_brier_contrast": 0.01899727758378713,
+        "delta_entropy_contrast": -0.03372966720775618
+      }
+    }
+  },
+  "subclasses": {
+    "CLBBB": {
+      "subclass": "CLBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 54,
+      "unique_patients": 42,
+      "standardized": {
+        "clean_ece": 0.041615613632732,
+        "paper_ece": 0.21422822925227658,
+        "delta_ece": 0.17261261561954458,
+        "clean_brier": 0.014802632231456734,
+        "paper_brier": 0.11540450771729577,
+        "delta_brier": 0.10060187548583903,
+        "clean_entropy_nats": 0.10223347760682698,
+        "paper_entropy_nats": 0.3202246656878389,
+        "delta_entropy_nats": 0.21799118808101192
+      },
+      "raw_mv": {
+        "clean_ece": 0.014047096172968586,
+        "paper_ece": 0.05964769257439506,
+        "delta_ece": 0.045600596401426476,
+        "clean_brier": 0.0012026296317403085,
+        "paper_brier": 0.00921531957725779,
+        "delta_brier": 0.008012689945517482,
+        "clean_entropy_nats": 0.057527154309169784,
+        "paper_entropy_nats": 0.1862390232355311,
+        "delta_entropy_nats": 0.12871186892636133
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.1270120192181181,
+        "delta_ece_contrast_ci95_low": -0.1850961023759272,
+        "delta_ece_contrast_ci95_high": -0.07771637722838759,
+        "delta_brier_contrast": -0.09258918554032154,
+        "delta_entropy_contrast": -0.0892793191546506
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 8.609746738951829,
+        "mean_st_snr_db": 12.246039575252693,
+        "mean_tp_snr_db": 11.121740124328765,
+        "qrs_slew_rate_correlation": 0.39578610448322743,
+        "qrs_peak_clipping_ratio": 0.8148630086546396
+      }
+    },
+    "CRBBB": {
+      "subclass": "CRBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 54,
+      "unique_patients": 45,
+      "standardized": {
+        "clean_ece": 0.05275018016497292,
+        "paper_ece": 0.11559050226653066,
+        "delta_ece": 0.06284032210155774,
+        "clean_brier": 0.010945290821509161,
+        "paper_brier": 0.03633004504543748,
+        "delta_brier": 0.025384754223928316,
+        "clean_entropy_nats": 0.1555976684992261,
+        "paper_entropy_nats": 0.26643070680433684,
+        "delta_entropy_nats": 0.11083303830511074
+      },
+      "raw_mv": {
+        "clean_ece": 0.01371905759528829,
+        "paper_ece": 0.036530363338965,
+        "delta_ece": 0.022811305743676707,
+        "clean_brier": 0.0007678367163737537,
+        "paper_brier": 0.0034835871893501404,
+        "delta_brier": 0.0027157504729763866,
+        "clean_entropy_nats": 0.06075008263203697,
+        "paper_entropy_nats": 0.13395803253451388,
+        "delta_entropy_nats": 0.07320794990247692
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.04002901635788103,
+        "delta_ece_contrast_ci95_low": -0.06118278660946895,
+        "delta_ece_contrast_ci95_high": -0.023383057242483237,
+        "delta_brier_contrast": -0.02266900375095193,
+        "delta_entropy_contrast": -0.037625088402633816
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 10.73292997283569,
+        "mean_st_snr_db": 16.040394360728364,
+        "mean_tp_snr_db": 15.452326984437047,
+        "qrs_slew_rate_correlation": 0.6068289164446321,
+        "qrs_peak_clipping_ratio": 0.9029268486981324
+      }
+    },
+    "IRBBB": {
+      "subclass": "IRBBB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 112,
+      "unique_patients": 106,
+      "standardized": {
+        "clean_ece": 0.41246656536324217,
+        "paper_ece": 0.45051112029302337,
+        "delta_ece": 0.038044554929781205,
+        "clean_brier": 0.2833911581789583,
+        "paper_brier": 0.30688689979867323,
+        "delta_brier": 0.023495741619714905,
+        "clean_entropy_nats": 0.398418479289468,
+        "paper_entropy_nats": 0.4401940309462085,
+        "delta_entropy_nats": 0.04177555165674052
+      },
+      "raw_mv": {
+        "clean_ece": 0.2697801940542246,
+        "paper_ece": 0.24382817818384084,
+        "delta_ece": -0.02595201587038376,
+        "clean_brier": 0.1591671562896635,
+        "paper_brier": 0.10693550231210584,
+        "delta_brier": -0.05223165397755765,
+        "clean_entropy_nats": 0.3511226623597085,
+        "paper_entropy_nats": 0.42225682181702445,
+        "delta_entropy_nats": 0.07113415945731594
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.06399657080016496,
+        "delta_ece_contrast_ci95_low": -0.09618586066882749,
+        "delta_ece_contrast_ci95_high": -0.03334960125630405,
+        "delta_brier_contrast": -0.07572739559727255,
+        "delta_entropy_contrast": 0.02935860780057542
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.717650161473989,
+        "mean_st_snr_db": 17.569292694616642,
+        "mean_tp_snr_db": 16.27527788890653,
+        "qrs_slew_rate_correlation": 0.6899670565989668,
+        "qrs_peak_clipping_ratio": 0.8708823389858706
+      }
+    },
+    "LAFB/LPFB": {
+      "subclass": "LAFB/LPFB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 179,
+      "unique_patients": 165,
+      "standardized": {
+        "clean_ece": 0.24360646680972992,
+        "paper_ece": 0.30033815174504036,
+        "delta_ece": 0.056731684935310445,
+        "clean_brier": 0.14967457023319738,
+        "paper_brier": 0.18436044032576077,
+        "delta_brier": 0.03468587009256338,
+        "clean_entropy_nats": 0.30288555137314455,
+        "paper_entropy_nats": 0.3668022513402723,
+        "delta_entropy_nats": 0.06391669996712773
+      },
+      "raw_mv": {
+        "clean_ece": 0.1572034725315827,
+        "paper_ece": 0.1749562035996321,
+        "delta_ece": 0.017752731068049393,
+        "clean_brier": 0.0792628313484261,
+        "paper_brier": 0.07113874585276143,
+        "delta_brier": -0.008124085495664665,
+        "clean_entropy_nats": 0.2559423537165878,
+        "paper_entropy_nats": 0.33985741555694493,
+        "delta_entropy_nats": 0.08391506184035713
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.03897895386726105,
+        "delta_ece_contrast_ci95_low": -0.06361999984198718,
+        "delta_ece_contrast_ci95_high": -0.01472826326046993,
+        "delta_brier_contrast": -0.042809955588228046,
+        "delta_entropy_contrast": 0.019998361873229398
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.906139676571172,
+        "mean_st_snr_db": 15.052999597915203,
+        "mean_tp_snr_db": 14.72626063882942,
+        "qrs_slew_rate_correlation": 0.640330931869451,
+        "qrs_peak_clipping_ratio": 0.8800603251573453
+      }
+    },
+    "1AVB": {
+      "subclass": "1AVB",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 79,
+      "unique_patients": 69,
+      "standardized": {
+        "clean_ece": 0.41047205349218246,
+        "paper_ece": 0.4717293425074106,
+        "delta_ece": 0.061257289015228145,
+        "clean_brier": 0.28513483417903285,
+        "paper_brier": 0.3208273810231171,
+        "delta_brier": 0.03569254684408424,
+        "clean_entropy_nats": 0.3846878297744109,
+        "paper_entropy_nats": 0.4592679254169393,
+        "delta_entropy_nats": 0.07458009564252838
+      },
+      "raw_mv": {
+        "clean_ece": 0.3457807534951953,
+        "paper_ece": 0.2771516097120092,
+        "delta_ece": -0.06862914378318613,
+        "clean_brier": 0.22381360799438832,
+        "paper_brier": 0.1356084090642467,
+        "delta_brier": -0.08820519893014162,
+        "clean_entropy_nats": 0.3744305822891484,
+        "paper_entropy_nats": 0.436605639047303,
+        "delta_entropy_nats": 0.0621750567581546
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.12988643279841428,
+        "delta_ece_contrast_ci95_low": -0.17978724024180434,
+        "delta_ece_contrast_ci95_high": -0.07942472095794338,
+        "delta_brier_contrast": -0.12389774577422585,
+        "delta_entropy_contrast": -0.012405038884373776
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.601743914888564,
+        "mean_st_snr_db": 14.86327125375747,
+        "mean_tp_snr_db": 14.82680919401017,
+        "qrs_slew_rate_correlation": 0.6367388561894725,
+        "qrs_peak_clipping_ratio": 0.8745829883536034
+      }
+    },
+    "IVCD": {
+      "subclass": "IVCD",
+      "parent_category": "CD",
+      "target_super_diagnosis": "CD",
+      "n_records": 79,
+      "unique_patients": 77,
+      "standardized": {
+        "clean_ece": 0.7167855386321633,
+        "paper_ece": 0.6851104630534596,
+        "delta_ece": -0.03167507557870375,
+        "clean_brier": 0.6226609822265065,
+        "paper_brier": 0.5559141568577796,
+        "delta_brier": -0.06674682536872689,
+        "clean_entropy_nats": 0.2996436961888251,
+        "paper_entropy_nats": 0.40328687695681575,
+        "delta_entropy_nats": 0.10364318076799067
+      },
+      "raw_mv": {
+        "clean_ece": 0.6274392940428202,
+        "paper_ece": 0.46564569015385976,
+        "delta_ece": -0.1617936038889604,
+        "clean_brier": 0.5144772282971088,
+        "paper_brier": 0.31087911827329334,
+        "delta_brier": -0.2035981100238155,
+        "clean_entropy_nats": 0.3603793649143052,
+        "paper_entropy_nats": 0.4734903289486007,
+        "delta_entropy_nats": 0.11311096403429549
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": -0.13011852831025666,
+        "delta_ece_contrast_ci95_low": -0.17247754525134623,
+        "delta_ece_contrast_ci95_high": -0.08791101229979136,
+        "delta_brier_contrast": -0.1368512846550886,
+        "delta_entropy_contrast": 0.009467783266304819
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 9.681129220977306,
+        "mean_st_snr_db": 15.285530094606846,
+        "mean_tp_snr_db": 15.454310495148949,
+        "qrs_slew_rate_correlation": 0.6735585523084273,
+        "qrs_peak_clipping_ratio": 0.846874517005411
+      }
+    },
+    "LVH": {
+      "subclass": "LVH",
+      "parent_category": "HYP",
+      "target_super_diagnosis": "HYP",
+      "n_records": 214,
+      "unique_patients": 202,
+      "standardized": {
+        "clean_ece": 0.692806984145612,
+        "paper_ece": 0.9204160126413559,
+        "delta_ece": 0.22760902849574383,
+        "clean_brier": 0.5579961072832001,
+        "paper_brier": 0.8552204241683308,
+        "delta_brier": 0.2972243168851306,
+        "clean_entropy_nats": 0.41538301572823316,
+        "paper_entropy_nats": 0.23740562104982882,
+        "delta_entropy_nats": -0.17797739467840434
+      },
+      "raw_mv": {
+        "clean_ece": 0.4864956671241496,
+        "paper_ece": 0.9292699866057764,
+        "delta_ece": 0.4427743194816268,
+        "clean_brier": 0.3367200292084707,
+        "paper_brier": 0.8677664388163767,
+        "delta_brier": 0.531046409607906,
+        "clean_entropy_nats": 0.4551065794438273,
+        "paper_entropy_nats": 0.23188034082377773,
+        "delta_entropy_nats": -0.2232262386200496
+      },
+      "contrast_raw_minus_standardized": {
+        "delta_ece_contrast_point": 0.215165290985883,
+        "delta_ece_contrast_ci95_low": 0.18359155924061815,
+        "delta_ece_contrast_ci95_high": 0.24480702225981937,
+        "delta_brier_contrast": 0.23382209272277532,
+        "delta_entropy_contrast": -0.045248843941645245
+      },
+      "qrs_phase_metrics": {
+        "mean_qrs_snr_db": 6.049170025694642,
+        "mean_st_snr_db": 8.588928851770325,
+        "mean_tp_snr_db": 8.45802535176112,
+        "qrs_slew_rate_correlation": 0.5524665566115028,
+        "qrs_peak_clipping_ratio": 0.828414204797051
+      },
+      "voltage_criteria_details": {
+        "n_lvh_records": 214,
+        "sokolow_lyon": {
+          "clean_mean_mv": 3.885780381543614,
+          "clean_std_mv": 1.3738108385379302,
+          "traced_mean_mv": 3.2764944633177144,
+          "traced_std_mv": 1.105831532539929,
+          "mean_attenuation_mv": -0.6092859182258994,
+          "ratio_traced_over_clean_mean": 0.8608314451254908,
+          "ratio_traced_over_clean_median": 0.9035402175676603,
+          "pearson_r": 0.7920410627257359,
+          "pearson_pvalue": 2.505086746791106e-47,
+          "spearman_rho": 0.8026076412733391,
+          "spearman_pvalue": 1.833101432087003e-49,
+          "corr_voltage_change_with_delta_hyp_prob": 0.35064554598465286
+        },
+        "cornell": {
+          "clean_mean_mv": 2.6249486006030414,
+          "clean_std_mv": 1.1596819479100602,
+          "traced_mean_mv": 2.2467633177812156,
+          "traced_std_mv": 1.015145866361878,
+          "mean_attenuation_mv": -0.3781852828218253,
+          "ratio_traced_over_clean_mean": 0.8666840823965063,
+          "ratio_traced_over_clean_median": 0.885239254657638,
+          "pearson_r": 0.8565478236538083,
+          "pearson_pvalue": 7.917401760050653e-63,
+          "spearman_rho": 0.9122630220589898,
+          "spearman_pvalue": 3.9732268457318248e-84,
+          "corr_voltage_change_with_delta_hyp_prob": 0.2431101929230672
+        }
+      }
+    }
+  },
+  "lvh_voltage_analysis": {
+    "n_lvh_records": 214,
+    "sokolow_lyon": {
+      "clean_mean_mv": 3.885780381543614,
+      "clean_std_mv": 1.3738108385379302,
+      "traced_mean_mv": 3.2764944633177144,
+      "traced_std_mv": 1.105831532539929,
+      "mean_attenuation_mv": -0.6092859182258994,
+      "ratio_traced_over_clean_mean": 0.8608314451254908,
+      "ratio_traced_over_clean_median": 0.9035402175676603,
+      "pearson_r": 0.7920410627257359,
+      "pearson_pvalue": 2.505086746791106e-47,
+      "spearman_rho": 0.8026076412733391,
+      "spearman_pvalue": 1.833101432087003e-49,
+      "corr_voltage_change_with_delta_hyp_prob": 0.35064554598465286
+    },
+    "cornell": {
+      "clean_mean_mv": 2.6249486006030414,
+      "clean_std_mv": 1.1596819479100602,
+      "traced_mean_mv": 2.2467633177812156,
+      "traced_std_mv": 1.015145866361878,
+      "mean_attenuation_mv": -0.3781852828218253,
+      "ratio_traced_over_clean_mean": 0.8666840823965063,
+      "ratio_traced_over_clean_median": 0.885239254657638,
+      "pearson_r": 0.8565478236538083,
+      "pearson_pvalue": 7.917401760050653e-63,
+      "spearman_rho": 0.9122630220589898,
+      "spearman_pvalue": 3.9732268457318248e-84,
+      "corr_voltage_change_with_delta_hyp_prob": 0.2431101929230672
+    }
+  }
+}

@@ -1,0 +1,41 @@
+primary_outcome: delta_classwise_ece
+uncertainty_score: delta_mean_binary_entropy
+primary_level: creased
+diagnosis_as_input: false
+levels: [printed, creased, noisy]
+ecg_image_kit_commit: 27b90f56896c9fc78b05a83ca14844ea2637aa0b
+digitizer: ecg_image_kit_image_to_sequence_max_finder
+correlation_threshold: 0.8
+bootstrap:
+  cluster: patient
+  resamples: 1000
+  seed: 42
+  percentiles: [2.5, 97.5]
+arms: [standardized, raw_mv]
+arm_configs:
+  standardized: configs/stage2.yaml
+  raw_mv: configs/stage2_raw.yaml
+arm_results:
+  standardized: results/stage2
+  raw_mv: results/stage2_raw
+digitizer_check: results/digitizer_check.json
+claim_scope: synthetic PTB-XL paper ECG only
+scale_control:
+  kind: oracle_affine_match
+  uses_clean_waveform: true
+corrector:
+  arm: raw_mv
+  fit_split: validation
+  apply_split: test
+  features: [logit, traced_lead_std_mv, ink_gap_fraction]
+  auroc_drop_limit: 0.01
+  target_class: CD
+  target_role: secondary
+real_scan:
+  source: D0
+  data_dir: data/ecg-image-database
+  variant_id: null
+  score_split: test
+  correlation_threshold: 0.8
+  excluded: [emory, akershus, phone, mold]
+external_claim: color scans of printed PTB-XL sheets, fold 10 overlap only
