@@ -50,6 +50,9 @@ To validate an already-downloaded dataset without downloading again, run
 - `tests/`: label, leakage, training, and trace-check tests.
 - `results/`: generated environment metadata, split class counts, per-record
   labels, and pipeline configuration/source-hash metadata.
+- The smoke-test summary and report are kept under `results/smoke_test_50/`;
+  regenerated per-record image traces are intentionally ignored because they
+  are disposable cache files.
 
 The generated results are reproducibility artifacts for data preparation, not
 model-performance or clinical evaluation results.

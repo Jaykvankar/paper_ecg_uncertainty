@@ -119,7 +119,7 @@ def _write_traces(path, completed, part, classes, tracer, check):
 def locked_recover():
     """Use the tracer that produced the locked JSON when the working copy differs."""
     current = Path('src/digitize.py')
-    backup = Path('src/digitize.py.bak')
+    backup = Path('src/digitize_locked.py')
     if not backup.exists() or _file_sha256(backup) == _file_sha256(current):
         return recover_leads, current.as_posix()
     source = backup.read_text(encoding='utf-8')
